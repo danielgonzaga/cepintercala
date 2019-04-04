@@ -1,0 +1,5 @@
+Olá, professor 
+
+Não inclui o arquivo cep.dat pois o git não deixa enviar um arquivo de 200mb para o repositório, então não enviei ele, pensando que o senhor pode coloca-lo manualmente dentro da pasta do projeto quando clonar meu repositório para sua máquina.
+
+Obrigado!
