@@ -28,6 +28,7 @@ public class Main {
 		RandomAccessFile f = new RandomAccessFile("cep.dat", "r");
 		Endereco e = new Endereco();
 		
+		
 		// CÓDIGO PARA CRIAR UM ARQUIVO COM APENAS 80 CEPs PARA PROPÓSITO DE TESTES
 		/*
 		RandomAccessFile saida = new RandomAccessFile("cep80.dat","rw");
@@ -35,7 +36,7 @@ public class Main {
 			f.seek(i*300);
 			e.leEndereco(f);
 			e.escreveEndereco(saida);
-		}*/
+		}*/ // FIM DA PRIMEIRA ETAPA DO CÓDIGO PARA CRIAR O CEP80.DAT
 		
 		
 		int k = 0;
@@ -48,6 +49,7 @@ public class Main {
 			
 			count++;
 			
+			
 			// CÓDIGO PARA CASO UTILIZE O ARQUIVO COM 80 CEPs, COMENTAR CÓDIGO ORIGINAL CASO VÁ UTILIZAR ESTE
 			/*
 			for(int j=0; j<10; j++) {
@@ -56,10 +58,10 @@ public class Main {
 				e.leEndereco(saida);
 				e.escreveEndereco(lista.get(i));
 				
-			}*/
+			}*/ // FIM DA SEGUNDA ETAPA DO CÓDIGO PARA CRIAR O CEP80.DAT
+			
 			
 			// CÓDIGO ORIGINAL - UTILIZA O ARQUIVO CEP.DAT ORIGINAL COM TODAS AS 699308 LINHAS
-			
 			try {
 				for(int j=0; j<87414; j++) {
 					f.seek(k*300);
@@ -69,13 +71,15 @@ public class Main {
 				}
 			} catch(java.io.EOFException error) {
 				break;
-			}
+			} // FIM CÓDIGO ORIGINAL
 			
 		}
 		
+		f.close();
+		
 		boolean abriu = true;
 		
-		while(abriu == true) {
+		while(abriu) {
 			try {
 				ArrayList<Endereco> a1 = new ArrayList<Endereco>();
 				ArrayList<Endereco> a2 = new ArrayList<Endereco>();
@@ -154,7 +158,6 @@ public class Main {
 				
 			} catch (java.lang.IndexOutOfBoundsException erro) {
 				abriu = false;
-				break;
 			}
 			
 		}	
