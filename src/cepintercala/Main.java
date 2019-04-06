@@ -54,22 +54,21 @@ public class Main {
 			/*
 			for(int j=0; j<10; j++) {
 				saida.seek(k*300);
-				k++;
 				e.leEndereco(saida);
 				e.escreveEndereco(lista.get(i));
-				
+				k++;
 			}*/ // FIM DA SEGUNDA ETAPA DO CÓDIGO PARA CRIAR O CEP80.DAT
 			
 			
 			// CÓDIGO ORIGINAL - UTILIZA O ARQUIVO CEP.DAT ORIGINAL COM TODAS AS 699308 LINHAS
 			try {
-				for(int j=0; j<87414; j++) {
+				for(int j=0; j<((f.length()/300)/8); j++) {
 					f.seek(k*300);
-					k++;
 					e.leEndereco(f);
 					e.escreveEndereco(lista.get(i));
+					k++;
 				}
-			} catch(java.io.EOFException error) {
+			} catch(java.io.EOFException ex) {
 				break;
 			} // FIM CÓDIGO ORIGINAL
 			
@@ -93,6 +92,8 @@ public class Main {
 					a1.add(e2);
 				}
 				
+				f2.close();
+				
 				f3.seek(0);
 				while(f3.getFilePointer() < f3.length()) {
 					Endereco e3 = new Endereco();
@@ -100,7 +101,9 @@ public class Main {
 					a2.add(e3);
 				}
 				
-				file.add(new File("cep"+Integer.toString(count)+".dat"));
+				f3.close();
+				
+				file.add(new File("cep"+count+".dat"));
 				RandomAccessFile fnovo = new RandomAccessFile(file.get(file.size()-1), "rw");
 				lista.add(fnovo);
 				
@@ -114,7 +117,7 @@ public class Main {
 					int ordem = 0;
 					try {
 						ordem = c1.compare(a1.get(0), a2.get(0));
-					} catch(java.lang.IndexOutOfBoundsException erro) {
+					} catch(java.lang.IndexOutOfBoundsException ex) {
 						if(a1.size() == 0) {
 							ordem = 1;
 						} else {
@@ -156,7 +159,7 @@ public class Main {
 				
 				count++;
 				
-			} catch (java.lang.IndexOutOfBoundsException erro) {
+			} catch (java.lang.IndexOutOfBoundsException ex) {
 				abriu = false;
 			}
 			
